@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "FX+QGViV6Rm6hesfpavNgfw7WUrfkmqzFQkfPddUATI=",
+  "Source": "my-server",
+  "BasePath": "_content/my-server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
