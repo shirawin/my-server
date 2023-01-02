@@ -40,6 +40,14 @@ public partial class MyDBContext : DbContext
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     //    => optionsBuilder.UseNpgsql("Name=MyDBConnectionString");
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseNpgsql("MyDBConnectionString");
+        }
+    }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Alarm>(entity =>

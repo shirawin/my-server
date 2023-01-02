@@ -283,3 +283,6 @@ C:\Users\user1\Desktop\Vs2022\BackendProject\my-server\my-server\bin\Debug\net6.
 C:\Users\user1\Desktop\Vs2022\BackendProject\my-server\my-server\bin\Debug\net6.0\MimeKit.dll
 C:\Users\user1\Desktop\Vs2022\BackendProject\my-server\my-server\bin\Debug\net6.0\NETCore.MailKit.dll
 C:\Users\user1\Desktop\Vs2022\BackendProject\my-server\my-server\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+C:\Users\user1\Desktop\Vs2022\BackendProject\my-server\my-server\bin\Debug\net6.0\Services.dll
+C:\Users\user1\Desktop\Vs2022\BackendProject\my-server\my-server\bin\Debug\net6.0\Services.pdb
+C:\Users\user1\Desktop\Vs2022\BackendProject\my-server\my-server\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll

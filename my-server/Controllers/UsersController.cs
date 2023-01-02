@@ -24,19 +24,27 @@ namespace my_server.Controllers
 
         // GET: api/Users
         [HttpGet]
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        {
+            return await _context.Users.ToListAsync();
+        }
+
+
+        // GET: api/checkPassword/{email}/{password}
+        [HttpGet]
         [Route("/api/checkPassword/{email}/{password}")]
-        public async Task<ActionResult<IEnumerable<User>>> checkPassword(string email,string password)
+        public async Task<ActionResult<IEnumerable<User>>> checkPassword(string email, string password)
         {
             var result = await _dbStore.checkPassword(email, password);
-            if(result!=null)
+            if (result != null)
             {
                 return Ok(result);
             }
             return BadRequest();
         }
 
-        // GET: api/Users/5
-        [HttpGet("{id}")]
+        // GET: api/Users/5
+        [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -49,9 +57,9 @@ namespace my_server.Controllers
             return user;
         }
 
-        // PUT: api/Users/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        // PUT: api/Users/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
             if (id != user.Code)
@@ -80,9 +88,9 @@ namespace my_server.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        // POST: api/Users
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
             _context.Users.Add(user);
@@ -91,8 +99,8 @@ namespace my_server.Controllers
             return CreatedAtAction("GetUser", new { id = user.Code }, user);
         }
 
-        // DELETE: api/Users/5
-        [HttpDelete("{id}")]
+        // DELETE: api/Users/5
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -116,7 +124,7 @@ namespace my_server.Controllers
         [HttpPost]
         public int logIn(User user)
         {
-            return _context.Users.
+            return 0;
         }
     }
 }
