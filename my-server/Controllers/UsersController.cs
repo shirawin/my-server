@@ -17,9 +17,11 @@ namespace my_server.Controllers
         private readonly MyDBContext _context;
         private readonly IusersData _dbStore;
 
-        public UsersController(MyDBContext context)
+        public UsersController(MyDBContext context, IusersData dbStore)
         {
+
             _context = context;
+            _dbStore = dbStore;
         }
 
         // GET: api/Users
@@ -35,6 +37,7 @@ namespace my_server.Controllers
         [Route("/api/checkPassword/{email}/{password}")]
         public async Task<ActionResult<IEnumerable<User>>> checkPassword(string email, string password)
         {
+            Console.WriteLine("checkPassword");
             var result = await _dbStore.checkPassword(email, password);
             if (result != null)
             {

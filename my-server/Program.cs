@@ -3,6 +3,7 @@ using my_server;
 using NETCore.MailKit.Extensions;
 using NETCore.MailKit.Infrastructure.Internal;
 using Repositories.GeneratedModels;
+using Services.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,8 +36,10 @@ builder.Services.AddMailKit(optionBuilder =>
 });
 
   builder.Services.AddScoped<EmailManager>();
- 
-  var MyAppOrigin = "MyAppOrigin";
+  builder.Services.AddScoped<IusersData, UsersData>();
+
+
+var MyAppOrigin = "MyAppOrigin";
 
   builder.Services.AddCors(options =>
   {
