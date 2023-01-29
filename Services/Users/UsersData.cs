@@ -14,54 +14,38 @@ namespace Services.Users
         {
             _context = context;
         }
-        public async Task<int> checkPassword(string email, string password)
+        public async Task<int> isExsitsUser(string email, string password)
         {
-           
-            List<User> list = _context.Users.ToList();
             var checkEmail  = _context.Users.Where(u => u.Email == email).FirstOrDefault();
             if (checkEmail != null)
             {
                 var checkPassWord = _context.Users.Where(u => u.Password == password).FirstOrDefault();
                 if (checkPassWord != null)
                 {
-
                     if (checkPassWord.Activestatus == true)
-                        return checkPassWord.Code;
-                    else
-                    {
-                        return -1;
-                    }
+                        return checkPassWord.Code; //משתמש קיים!
+
+                    else return -1;   // שם משתמש וסיסמה נכונים+משתמש לא פעיל
                 }
-                else
-                {
-                    return 1;
-                }
-                    
+                else return 1;    // סיסמה שגויה   
             }
-            else
-            {
-               return 2;
-            }
-            //foreach (var user in list)
-            //{
-            //    if (user.Email == email)
-            //        if (user.Password == password)
-            //            if (user.Activestatus == true)
-            //            {
-            //                return user.Code; // שם משתמש וסיסמה נכונים+ משתמש פעיל
-            //            }
-            //            else
-            //            {
-            //                if (user.Activestatus == false)
-            //                {
-            //                    return -1; // שם משתמש וסיסמה נכונים+ משתמש לא פעיל
-            //                }
-            //                return 0; // שם משתמש וסיסמה נכונים+ משתמש חסום
-            //            }
-            //        else
-            //            return 1; //משתמש קיים - סיסמה שגויה
-            //}
-            //return 2; //משתמש לא קיים
+            else return 2; //משתמש לא קיים
         }
+
+        public async Task<bool> createUser(User user)
+        {
+            var isExsists =await isExsitsUser(user.Email,user.Password);
+            var isOk=true;
+            int x = 2;
+            if (isExsists == 2)
+            {
+                //var userModel = _mapper.Map<User>(user);
+                await _context.AddAsync(user);
+                isOk = await _context.SaveChangesAsync() >= 0;
+                if (isOk) return true;    
+            }
+            return false;
+        }
+
     }
 }

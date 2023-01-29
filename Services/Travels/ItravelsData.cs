@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace Services.Users
+namespace Services.Travels
 {
-    public interface IusersData
+    public interface ItravelsData
     {
-        Task<int> isExsitsUser(string email, string password);
+        Task<IEnumerable<Travel>> GetActiveTravels();
 
-        Task<bool> createUser(User user);
+        Task<bool> createTravel(Travel travel);
+
     }
 }

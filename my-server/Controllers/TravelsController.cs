@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Repositories.GeneratedModels;
+using Services.Travels;
+
 
 namespace my_server.Controllers
 {
@@ -14,17 +16,56 @@ namespace my_server.Controllers
     public class TravelsController : ControllerBase
     {
         private readonly MyDBContext _context;
+        private readonly ItravelsData _dbStore;
 
-        public TravelsController(MyDBContext context)
+        public TravelsController(MyDBContext context, ItravelsData dbStore)
         {
             _context = context;
+            _dbStore= dbStore;
         }
 
         // GET: api/Travels
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Travel>>> GetTravels()
         {
-            return await _context.Travels.ToListAsync();
+            return await _context.Travels.ToListAsync(); 
+        }
+
+        //כל המודעות הפעילות - עבור התנדבים
+        // GET: api/GetActiveTravels
+        [HttpGet]
+        [Route("/api/GetActiveTravels")]
+        public async Task<ActionResult<IEnumerable<Travel>>> GetActiveTravels()
+        {
+            var travel = await _context.Travels.Where(t => t.Status == 1).ToListAsync();
+            if (travel == null)
+            {
+                return NotFound();
+            }
+
+            return travel;
+
+            //var result = await _dbStore.GetActiveTravels();
+            //if (result != null)
+            //{
+            //    return Ok(result);
+            //}
+            //return BadRequest();
+        }
+
+        // כל המודעות של נעזר מסוים
+        // GET: /api/GetTravelsByUser/{userId}
+        [HttpGet]
+        [Route("/api/GetTravelsByUser/{userId}")]
+        public async Task<ActionResult<IEnumerable<Travel>>> GetTravelsByUser(int userId)
+        {
+            var travel = await _context.Travels.Where(t => t.UserId == userId).ToListAsync();
+            if (travel == null)
+            {
+                return NotFound();
+            }
+
+            return travel;
         }
 
         // GET: api/Travels/5
@@ -32,7 +73,6 @@ namespace my_server.Controllers
         public async Task<ActionResult<Travel>> GetTravel(int id)
         {
             var travel = await _context.Travels.FindAsync(id);
-
             if (travel == null)
             {
                 return NotFound();

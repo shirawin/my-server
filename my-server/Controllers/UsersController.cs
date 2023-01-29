@@ -35,11 +35,22 @@ namespace my_server.Controllers
         // GET: api/checkPassword/{email}/{password}
         [HttpGet]
         [Route("/api/checkPassword/{email}/{password}")]
-        public async Task<ActionResult<IEnumerable<User>>> checkPassword(string email, string password)
+        public async Task<ActionResult<IEnumerable<User>>> isExsitsUser(string email, string password)
         {
-            Console.WriteLine("checkPassword");
-            var result = await _dbStore.checkPassword(email, password);
+            var result = await _dbStore.isExsitsUser(email, password);
             if (result != null)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+
+        [HttpPost]
+        [Route("/api/createUser")]
+        public async Task<ActionResult<IEnumerable<User>>> createUser(User user)
+        {
+            var result = await _dbStore.createUser(user);
+            if (result)
             {
                 return Ok(result);
             }

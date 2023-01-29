@@ -4,6 +4,7 @@ using NETCore.MailKit.Extensions;
 using NETCore.MailKit.Infrastructure.Internal;
 using Repositories.GeneratedModels;
 using Services.Users;
+using Services.Travels;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,7 @@ builder.Services.AddMailKit(optionBuilder =>
 
   builder.Services.AddScoped<EmailManager>();
   builder.Services.AddScoped<IusersData, UsersData>();
+  builder.Services.AddScoped<ItravelsData, TravlesData>();
 
 
 var MyAppOrigin = "MyAppOrigin";
