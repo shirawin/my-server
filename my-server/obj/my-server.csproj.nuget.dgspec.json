@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\my-server\\my-server.csproj": {}
+    "C:\\Users\\user1\\Desktop\\Projects\\my-server\\my-server\\my-server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\my-server\\my-server.csproj": {
+    "C:\\Users\\user1\\Desktop\\Projects\\my-server\\my-server\\my-server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\my-server\\my-server.csproj",
+        "projectUniqueName": "C:\\Users\\user1\\Desktop\\Projects\\my-server\\my-server\\my-server.csproj",
         "projectName": "my-server",
-        "projectPath": "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\my-server\\my-server.csproj",
+        "projectPath": "C:\\Users\\user1\\Desktop\\Projects\\my-server\\my-server\\my-server.csproj",
         "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\my-server\\obj\\",
+        "outputPath": "C:\\Users\\user1\\Desktop\\Projects\\my-server\\my-server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Repositories\\Repositories.csproj": {
-                "projectPath": "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Repositories\\Repositories.csproj"
+              "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Repositories\\Repositories.csproj": {
+                "projectPath": "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Repositories\\Repositories.csproj"
               },
-              "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Services\\Services.csproj": {
-                "projectPath": "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Services\\Services.csproj"
+              "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Services\\Services.csproj"
               }
             }
           }
@@ -47,6 +47,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.0, )"
@@ -90,7 +94,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -102,18 +107,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Repositories\\Repositories.csproj": {
+    "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Repositories\\Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Repositories\\Repositories.csproj",
+        "projectUniqueName": "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Repositories\\Repositories.csproj",
         "projectName": "Repositories",
-        "projectPath": "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Repositories\\Repositories.csproj",
+        "projectPath": "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Repositories\\Repositories.csproj",
         "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Repositories\\obj\\",
+        "outputPath": "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -167,7 +172,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -176,18 +182,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Services\\Services.csproj": {
+    "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Services\\Services.csproj",
+        "projectUniqueName": "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Services\\Services.csproj",
+        "projectPath": "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Services\\Services.csproj",
         "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Services\\obj\\",
+        "outputPath": "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -204,8 +210,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Repositories\\Repositories.csproj": {
-                "projectPath": "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Repositories\\Repositories.csproj"
+              "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Repositories\\Repositories.csproj": {
+                "projectPath": "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Repositories\\Repositories.csproj"
               }
             }
           }
@@ -219,13 +225,20 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -234,7 +247,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

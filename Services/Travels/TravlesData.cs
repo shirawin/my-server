@@ -19,11 +19,12 @@ namespace Services.Travels
 
         public async Task<bool> createTravel(Travel travel)
         {
-            //var travelModel = _mapper.Map<Travel>(travel);
-            //await _context.AddAsync(travelModel);
-            //var isOk = await _context.SaveChangesAsync() >= 0;
-            //if (isOk) 
-            //    return true;
+            await _context.Travels.AddAsync(travel);
+            var isOK = await _context.SaveChangesAsync() >= 0;
+            if(isOK)
+            {
+                return true;
+            }
             return false;
         }
 
@@ -34,6 +35,12 @@ namespace Services.Travels
             //var activeStatus = _context.Travels.Where(a => a.Status == 1).FirstOrDefault();
             return (Task<IEnumerable<Travel>>)_context.Travels.Where(a => a.Status == 1);
         }
+       public async Task<int> sumOfTraves()
+        {
+            var travels = _context.Travels.Count();
+            return travels;
+        }
+
 
     }
 }

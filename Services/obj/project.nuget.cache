@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "onT9hrJvzYLZNYri4999n5BDBNCrVS1xzvnhwQl1NJ+jw1D2g3PNh6ZvblglQtrp4HrU+evTpPsmknqQSNVudw==",
+  "dgSpecHash": "qqB7X1ygITuGLD5ocGmnLCKnnQq6LY/99EDnUyl+6oAigmyyOTXNz+Ml7a6CRWjd4+fNe238lfS5pof2ZkSXIQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\my-server\\Services\\Services.csproj",
+  "projectFilePath": "C:\\Users\\user1\\Desktop\\Projects\\my-server\\Services\\Services.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\user1\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\user1\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.0\\microsoft.entityframeworkcore.7.0.0.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.0\\microsoft.entityframeworkcore.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.0\\microsoft.entityframeworkcore.analyzers.7.0.0.nupkg.sha512",

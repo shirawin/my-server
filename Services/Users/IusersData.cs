@@ -13,5 +13,7 @@ namespace Services.Users
         Task<int> isExsitsUser(string email, string password);
 
         Task<bool> createUser(User user);
+       // Task<bool> updateUser(User user);
+        Task<int> sumOfHelpeds();
     }
 }

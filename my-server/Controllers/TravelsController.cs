@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using Repositories.GeneratedModels;
 using Services.Travels;
 
-
 namespace my_server.Controllers
 {
     [Route("api/[controller]")]
@@ -68,6 +67,19 @@ namespace my_server.Controllers
             return travel;
         }
 
+        [HttpPost]
+        [Route("/api/createTravel")]
+        public async Task<ActionResult<IEnumerable<Travel>>> createTravel(Travel travel)
+        {
+            var List = await _dbStore.createTravel(travel);
+            if (List == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(List);
+        }
+
         // GET: api/Travels/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Travel>> GetTravel(int id)
@@ -80,7 +92,6 @@ namespace my_server.Controllers
 
             return travel;
         }
-
         // PUT: api/Travels/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -142,6 +153,15 @@ namespace my_server.Controllers
         private bool TravelExists(int id)
         {
             return _context.Travels.Any(e => e.TravelId == id);
+        }
+        [HttpGet]
+        [Route("/api/GetSumOfTravels")]
+        public async Task<ActionResult<IEnumerable<Travel>>> GetSumOfTravels()
+        {
+            var result = await _dbStore.sumOfTraves();
+            return Ok(result);
+
+
         }
     }
 }

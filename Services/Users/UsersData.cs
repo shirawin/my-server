@@ -36,7 +36,7 @@ namespace Services.Users
         {
             var isExsists =await isExsitsUser(user.Email,user.Password);
             var isOk=true;
-            int x = 2;
+            
             if (isExsists == 2)
             {
                 //var userModel = _mapper.Map<User>(user);
@@ -46,6 +46,13 @@ namespace Services.Users
             }
             return false;
         }
+        public async Task<int> sumOfHelpeds()
+        {
+
+            var helpeds = _context.Users.Where(u => u.Usertype == false).Count();
+            return helpeds;
+        }
+
 
     }
 }

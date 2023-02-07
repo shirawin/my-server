@@ -12,3 +12,17 @@ C:\Users\user1\Desktop\Vs2022\BackendProject\my-server\Repositories\obj\Debug\ne
 C:\Users\user1\Desktop\Vs2022\BackendProject\my-server\Repositories\obj\Debug\net6.0\Repositories.pdb
 C:\Users\user1\Desktop\Vs2022\BackendProject\my-server\Repositories\obj\Debug\net6.0\Repositories.genruntimeconfig.cache
 C:\Users\user1\Desktop\Vs2022\BackendProject\my-server\Repositories\obj\Debug\net6.0\ref\Repositories.dll
+C:\Users\user1\Desktop\Projects\my-server\Repositories\bin\Debug\net6.0\Repositories.deps.json
+C:\Users\user1\Desktop\Projects\my-server\Repositories\bin\Debug\net6.0\Repositories.runtimeconfig.json
+C:\Users\user1\Desktop\Projects\my-server\Repositories\bin\Debug\net6.0\Repositories.dll
+C:\Users\user1\Desktop\Projects\my-server\Repositories\bin\Debug\net6.0\Repositories.pdb
+C:\Users\user1\Desktop\Projects\my-server\Repositories\obj\Debug\net6.0\Repositories.csproj.AssemblyReference.cache
+C:\Users\user1\Desktop\Projects\my-server\Repositories\obj\Debug\net6.0\Repositories.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user1\Desktop\Projects\my-server\Repositories\obj\Debug\net6.0\Repositories.AssemblyInfoInputs.cache
+C:\Users\user1\Desktop\Projects\my-server\Repositories\obj\Debug\net6.0\Repositories.AssemblyInfo.cs
+C:\Users\user1\Desktop\Projects\my-server\Repositories\obj\Debug\net6.0\Repositories.csproj.CoreCompileInputs.cache
+C:\Users\user1\Desktop\Projects\my-server\Repositories\obj\Debug\net6.0\Repositories.dll
+C:\Users\user1\Desktop\Projects\my-server\Repositories\obj\Debug\net6.0\refint\Repositories.dll
+C:\Users\user1\Desktop\Projects\my-server\Repositories\obj\Debug\net6.0\Repositories.pdb
+C:\Users\user1\Desktop\Projects\my-server\Repositories\obj\Debug\net6.0\Repositories.genruntimeconfig.cache
+C:\Users\user1\Desktop\Projects\my-server\Repositories\obj\Debug\net6.0\ref\Repositories.dll

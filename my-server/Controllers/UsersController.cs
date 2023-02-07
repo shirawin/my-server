@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Linq; 
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -29,12 +29,14 @@ namespace my_server.Controllers
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
+            Console.WriteLine("5");
+
         }
 
 
         // GET: api/checkPassword/{email}/{password}
         [HttpGet]
-        [Route("/api/checkPassword/{email}/{password}")]
+        [Route("/api/Users/checkPassword/{email}/{password}")]
         public async Task<ActionResult<IEnumerable<User>>> isExsitsUser(string email, string password)
         {
             var result = await _dbStore.isExsitsUser(email, password);
@@ -139,6 +141,15 @@ namespace my_server.Controllers
         public int logIn(User user)
         {
             return 0;
+        }
+        [HttpGet]
+        [Route("/api/GetSumOfHelpeds")]
+        public async Task<ActionResult<IEnumerable<Travel>>> GetSumOfHelpeds()
+        {
+           var result = await _dbStore.sumOfHelpeds();
+            return Ok(result);
+
+
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Services.Travels
         Task<IEnumerable<Travel>> GetActiveTravels();
 
         Task<bool> createTravel(Travel travel);
+        Task<int> sumOfTraves();
 
     }
 }
