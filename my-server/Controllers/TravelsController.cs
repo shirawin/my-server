@@ -72,6 +72,7 @@ namespace my_server.Controllers
         public async Task<ActionResult<IEnumerable<Travel>>> createTravel(Travel travel)
         {
             var List = await _dbStore.createTravel(travel);
+           
             if (List == null)
             {
                 return NotFound();
