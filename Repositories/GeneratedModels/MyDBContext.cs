@@ -40,6 +40,15 @@ public partial class MyDBContext : DbContext
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     //    => optionsBuilder.UseNpgsql("Name=MyDBConnectionString");
 
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    if (!optionsBuilder.IsConfigured)
+    //    {
+    //        optionsBuilder.UseNpgsql("MyDBConnectionString");
+    //    }
+    //}
+
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
@@ -47,7 +56,6 @@ public partial class MyDBContext : DbContext
             optionsBuilder.UseNpgsql("MyDBConnectionString");
         }
     }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Alarm>(entity =>
@@ -122,7 +130,13 @@ public partial class MyDBContext : DbContext
             entity.Property(e => e.TravelId)
                 .UseIdentityAlwaysColumn()
                 .HasIdentityOptions(null, null, 100L, null, null, null);
+            entity.Property(e => e.Ambulance).HasDefaultValueSql("false");
+            entity.Property(e => e.BabyChair).HasDefaultValueSql("false");
+            entity.Property(e => e.Car).HasDefaultValueSql("false");
             entity.Property(e => e.Dest).HasColumnType("character varying");
+            entity.Property(e => e.Elevator).HasDefaultValueSql("false");
+            entity.Property(e => e.Motorcycle).HasDefaultValueSql("false");
+            entity.Property(e => e.Places).HasDefaultValueSql("0");
             entity.Property(e => e.Time).HasColumnType("timestamp without time zone");
 
             entity.HasOne(d => d.User).WithMany(p => p.Travels)
@@ -145,21 +159,25 @@ public partial class MyDBContext : DbContext
                 .HasIdentityOptions(100L, 5L, null, null, null, null)
                 .HasColumnName("  code");
             entity.Property(e => e.Activestatus).HasColumnName("activestatus");
-            entity.Property(e => e.Address)
+            entity.Property(e => e.City)
                 .HasMaxLength(100)
-                .HasColumnName("address");
+                .HasColumnName("city");
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .HasColumnName("email");
             entity.Property(e => e.Fullname)
                 .HasMaxLength(100)
                 .HasColumnName("fullname");
+            entity.Property(e => e.Housenumber).HasColumnName("housenumber");
             entity.Property(e => e.Password)
                 .HasMaxLength(10)
                 .HasColumnName("password");
             entity.Property(e => e.Phone)
                 .HasMaxLength(10)
                 .HasColumnName("phone");
+            entity.Property(e => e.Street)
+                .HasMaxLength(100)
+                .HasColumnName("street");
             entity.Property(e => e.Usertype).HasColumnName("usertype");
         });
 

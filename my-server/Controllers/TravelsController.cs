@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Repositories.GeneratedModels;
+using Services.DTOS;
 using Services.Travels;
-
+using static my_server.EmailManager;
 namespace my_server.Controllers
 {
     [Route("api/[controller]")]
@@ -16,11 +17,14 @@ namespace my_server.Controllers
     {
         private readonly MyDBContext _context;
         private readonly ItravelsData _dbStore;
+        private readonly EmailManager _email;
 
-        public TravelsController(MyDBContext context, ItravelsData dbStore)
+
+        public TravelsController(MyDBContext context, ItravelsData dbStore, EmailManager email)
         {
             _context = context;
             _dbStore= dbStore;
+            _email = email;
         }
 
         // GET: api/Travels
@@ -34,22 +38,15 @@ namespace my_server.Controllers
         // GET: api/GetActiveTravels
         [HttpGet]
         [Route("/api/GetActiveTravels")]
-        public async Task<ActionResult<IEnumerable<Travel>>> GetActiveTravels()
+        public async Task<ActionResult<TravelDto>> GetActiveTravels()
         {
-            var travel = await _context.Travels.Where(t => t.Status == 1).ToListAsync();
+            var travel = await _dbStore.GetActiveTravels();
             if (travel == null)
             {
                 return NotFound();
             }
 
-            return travel;
-
-            //var result = await _dbStore.GetActiveTravels();
-            //if (result != null)
-            //{
-            //    return Ok(result);
-            //}
-            //return BadRequest();
+            return Ok(travel);
         }
 
         // כל המודעות של נעזר מסוים
@@ -81,6 +78,19 @@ namespace my_server.Controllers
             return Ok(List);
         }
 
+        [HttpPost]
+        [Route("/api/filterTravel")]
+        public async Task<ActionResult<IEnumerable<Travel>>> filterTravel(FilterTravelsDto filterObj)
+        {
+            var List = await _dbStore.filterTravel(filterObj);
+
+            if (List == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(List);
+        }
         // GET: api/Travels/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Travel>> GetTravel(int id)
@@ -123,7 +133,23 @@ namespace my_server.Controllers
 
             return NoContent();
         }
+        [HttpPost]
+        [Route("/api/takeTravel")]
+        public async Task<ActionResult<IEnumerable<Travel>>> takeaTravel(int travelID, int volunteerID)
+        {
+            var result = await _dbStore.takeTravel(travelID, volunteerID);
+            var volunteer = await _context.Users.FindAsync(volunteerID);
+            var travel = await _context.Travels.FindAsync(travelID);
+            if(travel!=null )
+            {
+                var user = await _context.Users.FindAsync(travel.UserId);
+                 _email.EmailWithDetails( user,volunteer);
+              
+            }
+            return Ok(result);
 
+
+        }
         // POST: api/Travels
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -164,5 +190,6 @@ namespace my_server.Controllers
 
 
         }
+        
     }
 }

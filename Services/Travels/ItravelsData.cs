@@ -1,4 +1,5 @@
 ﻿using Repositories.GeneratedModels;
+using Services.DTOS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,12 @@ namespace Services.Travels
 {
     public interface ItravelsData
     {
-        Task<IEnumerable<Travel>> GetActiveTravels();
+        Task<IEnumerable<TravelDto>> GetActiveTravels();
 
         Task<bool> createTravel(Travel travel);
+        Task <List<TravelDto>> filterTravel(FilterTravelsDto filterObj);
         Task<int> sumOfTraves();
+        Task<int> takeTravel(int travelID,int volunteerID);     
 
     }
 }

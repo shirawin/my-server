@@ -13,13 +13,17 @@ public partial class User
 
     public string? Phone { get; set; }
 
-    public string? Address { get; set; }
-
     public bool? Activestatus { get; set; }
 
     public bool? Usertype { get; set; }
 
     public string? Password { get; set; }
+
+    public string? City { get; set; }
+
+    public string? Street { get; set; }
+
+    public int? Housenumber { get; set; }
 
     public virtual ICollection<Alarm> Alarms { get; } = new List<Alarm>();
 
