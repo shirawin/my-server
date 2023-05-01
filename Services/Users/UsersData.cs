@@ -1,4 +1,5 @@
-﻿using Repositories.GeneratedModels;
+﻿using Microsoft.EntityFrameworkCore;
+using Repositories.GeneratedModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,45 @@ namespace Services.Users
             return helpeds;
         }
 
+        public async Task<bool> getUserType(int code)
+        {
+            var type = _context.Users.Find(code);
+            return (bool)type.Usertype;
+        }
 
+        public async Task<bool> updateUser(User user)
+        {
+            var userId = await _context.Users.FirstOrDefaultAsync(x=>x.Code==user.Code);
+            if (userId != null)
+            {
+
+          
+            userId.Fullname=user.Fullname;
+            //יש ליצור אוביקא מסוג DTO
+            // כייון שמדובר בשילוב של משתמש ומתנדב.
+            //  userId.Code=user.Code;
+            //   userId.Usertype = user.Usertype;
+            userId.Password = user.Password;
+            userId.Email =user.Email;
+            userId.Phone = user.Phone;
+            userId.City = user.City;
+            userId.Street = user.Street;
+            userId.Housenumber = user.Housenumber;
+            userId.Housenumber = user.Housenumber;
+            userId.Housenumber = user.Housenumber;
+            userId.Housenumber = user.Housenumber;
+            userId.Housenumber = user.Housenumber;
+            userId.Housenumber = user.Housenumber;
+
+            }
+            //להוסיף את שאר הנתונים.
+            var isOk= await _context.SaveChangesAsync() >= 0;
+
+           
+            return isOk;
+            
+        }
     }
+        
 }
+

@@ -8,9 +8,33 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = my_server
 build_property.RootNamespace = my_server
-build_property.ProjectDir = C:\Users\user1\Desktop\Projects\my-server\my-server\
+build_property.ProjectDir = C:\Users\user1\Desktop\Vs2022\BackendProject\server-side\my-server\my-server\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\user1\Desktop\Projects\my-server\my-server
+build_property.MSBuildProjectDirectory = C:\Users\user1\Desktop\Vs2022\BackendProject\server-side\my-server\my-server
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/user1/Desktop/Vs2022/BackendProject/server-side/my-server/my-server/Views/Cars/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user1/Desktop/Vs2022/BackendProject/server-side/my-server/my-server/Views/Cars/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user1/Desktop/Vs2022/BackendProject/server-side/my-server/my-server/Views/Cars/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user1/Desktop/Vs2022/BackendProject/server-side/my-server/my-server/Views/Cars/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user1/Desktop/Vs2022/BackendProject/server-side/my-server/my-server/Views/Cars/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user1/Desktop/Vs2022/BackendProject/server-side/my-server/my-server/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

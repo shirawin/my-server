@@ -26,39 +26,49 @@ namespace Services.Travels
 
         public async Task<List<TravelDto>> filterTravel(FilterTravelsDto filterObj)
         {
-            var res = await (from t in _context.Travels
-                             join u in _context.Users           
-                             on t.UserId equals u.Code
-                             where 
-            //                 (filterObj.FirstDate == null || filterObj.FirstDate <= t.Time) &&
-            //(filterObj.SecondDate == null || filterObj.SecondDate >= t.Time)
-            //&& 
-            (filterObj.city == null || filterObj.city == u.City)
+            try
+            {
 
-                             select new TravelDto
-                             {
-                                 TravelId = t.TravelId,
-                                 Date = t.Date,
-                                 Dest = t.Dest,
-                                 City = u.City,
-                                 Street = u.Street,
-                                 HouseNumber = u.Housenumber,
-                                 List = _context.Travels.Where(x => x.TravelId == t.TravelId).Select(x => new TravelDetailes
+
+                var res = await (from t in _context.Travels
+                                 join u in _context.Users
+                                 on t.UserId equals u.Code
+                                 where
+                                (filterObj.FirstDate == null || filterObj.FirstDate.Value.ToLocalTime() <= t.Time) &&
+                (filterObj.SecondDate == null || filterObj.SecondDate.Value.ToLocalTime() >= t.Time)
+                &&
+                (filterObj.city == null || filterObj.city == u.City)
+
+                                 select new TravelDto
                                  {
-                                     Motorcycle = x.Motorcycle,
-                                     Car = x.Car,
-                                     Ambulance = x.Ambulance,
+                                     TravelId = t.TravelId,
+                                     Date = t.Date,
+                                     Dest = t.Dest,
+                                     City = u.City,
+                                     Street = u.Street,
+                                     HouseNumber = u.Housenumber,
+                                     List = _context.Travels.Where(x => x.TravelId == t.TravelId).Select(x => new TravelDetailes
+                                     {
+                                         Motorcycle = x.Motorcycle,
+                                         Car = x.Car,
+                                         Ambulance = x.Ambulance,
 
-                                     BabyChair = x.BabyChair,
+                                         BabyChair = x.BabyChair,
 
-                                     Elevator = x.Elevator,
+                                         Elevator = x.Elevator,
 
-                                     Places = x.Places,
-                                 }).FirstOrDefault(),
+                                         Places = x.Places,
+                                     }).FirstOrDefault(),
 
-                             }
-            ).ToListAsync();
-            return res;
+                                 }
+                ).ToListAsync();
+                return res;
+            }catch(Exception e)
+            {
+
+            }
+            return null;
+
             //var tes = await _context.Travels.Where(x=> (filterObj.FirstDate==null|| filterObj.FirstDate<=x.Date)&&
             //(filterObj.SecondDate == null || filterObj.SecondDate >= x.Date)
             //&& (filterObj.city == null || filterObj.city == x.c))

@@ -15,5 +15,7 @@ namespace Services.Users
         Task<bool> createUser(User user);
        // Task<bool> updateUser(User user);
         Task<int> sumOfHelpeds();
+        Task<bool> getUserType(int code);
+        Task<bool> updateUser(User user);
     }
 }

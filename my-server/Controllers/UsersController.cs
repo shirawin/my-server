@@ -148,8 +148,23 @@ namespace my_server.Controllers
         {
            var result = await _dbStore.sumOfHelpeds();
             return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("/api/GetUserType")]
+        public async Task<ActionResult<IEnumerable<bool>>> getUserType(int code)
+        {
+            var result = await _dbStore.getUserType(code);
+            return Ok(result);
+        }
 
 
+        [HttpPost]
+        [Route("/api/updateUser")]
+        public async Task<ActionResult<IEnumerable<bool>>> updateUser(User user)
+        {
+            var result = await _dbStore.updateUser(user);
+            return Ok(result);
         }
     }
 }
