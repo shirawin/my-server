@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P4SMIfFaRfuYdrI905jjkfO1cPa4NyoMPmmDEE7vPI2n+1NVCzDb6RCsKDC3ajvDqd61EA2eZ+R/rWv/jgdZ2g==",
+  "dgSpecHash": "XcTL+9BfiBzhMk67M7Yrjdeztyav/Sk1g9otPn77+wi17ZYbwlIC+0ijFO/wMCtDTGX1IE/MGDyfj7d77cY3UQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user1\\Desktop\\Vs2022\\BackendProject\\server-side\\my-server\\my-server\\my-server.csproj",
+  "projectFilePath": "C:\\Users\\user1\\Desktop\\Projects\\server-side\\my-server\\my-server\\my-server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user1\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

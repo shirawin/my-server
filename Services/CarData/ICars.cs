@@ -10,5 +10,6 @@ namespace Services.CarData
     public interface ICars
     {
         Task<bool> updateDetailsCar(Car car);
+        Task<bool> createCar(Car car);
     }
 }

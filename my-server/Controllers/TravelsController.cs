@@ -133,9 +133,9 @@ namespace my_server.Controllers
 
             return NoContent();
         }
-        [HttpPost]
-        [Route("/api/takeTravel")]
-        public async Task<ActionResult<IEnumerable<Travel>>> takeaTravel(int travelID, int volunteerID)
+        [HttpGet]
+        [Route("/api/takeTravel/{travelID}/{volunteerID}")]
+        public async Task<ActionResult<IEnumerable<bool>>> takeaTravel(int travelID, int volunteerID)
         {
             var result = await _dbStore.takeTravel(travelID, volunteerID);
             var volunteer = await _context.Users.FindAsync(volunteerID);

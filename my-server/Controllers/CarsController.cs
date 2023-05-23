@@ -131,17 +131,17 @@ namespace my_server.Controllers
             var result = await _dbStore.updateDetailsCar(car);
             return Ok(result);
         }
-        //[HttpPost]
-        //[Route("/api/createCar")]
-        //public async Task<ActionResult<IEnumerable<User>>> createUser(Car car)
-        //{
-        //    var result = await _dbStore.
-        //    if (result)
-        //    {
-        //        return Ok(result);
-        //    }
-        //    return BadRequest();
-        //}
-
+        [HttpPost]
+        [Route("/api/createCar")]
+        public async Task<ActionResult<IEnumerable<Car>>> createCar(Car car)
+        {
+            var result = await _dbStore.createCar(car);
+            if (result)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+        
     }
 }

@@ -27,28 +27,6 @@ public partial class MyDBContext : DbContext
 
     public virtual DbSet<Volunteer> Volunteers { get; set; }
 
-    //    When re-running the Scaffold command to update the changes in the DB,
-    //    The OnConfiguring function should be put in a comment
-    //    because it interferes with the connection to the DB when the project is running.
-
-    //    The Scaffold command is:
-
-    //    Scaffold-DbContext Name = "MyDBConnectionString" Npgsql.EntityFrameworkCore.PostgreSQL -OutputDir GeneratedModels -Force -Context MyDBContext
-
-    //    It must be run in the console of the Repositories project
-
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //    => optionsBuilder.UseNpgsql("Name=MyDBConnectionString");
-
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //{
-    //    if (!optionsBuilder.IsConfigured)
-    //    {
-    //        optionsBuilder.UseNpgsql("MyDBConnectionString");
-    //    }
-    //}
-
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
@@ -56,6 +34,7 @@ public partial class MyDBContext : DbContext
             optionsBuilder.UseNpgsql("MyDBConnectionString");
         }
     }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Alarm>(entity =>
@@ -68,8 +47,12 @@ public partial class MyDBContext : DbContext
                 .UseIdentityAlwaysColumn()
                 .HasIdentityOptions(10L, 10L, null, null, null, null)
                 .HasColumnName("codealarm");
-            entity.Property(e => e.Maxhour).HasColumnName("maxhour");
-            entity.Property(e => e.Minhour).HasColumnName("minhour");
+            entity.Property(e => e.Maxhour)
+                .HasColumnType("character varying")
+                .HasColumnName("maxhour");
+            entity.Property(e => e.Minhour)
+                .HasColumnType("character varying")
+                .HasColumnName("minhour");
             entity.Property(e => e.Status).HasColumnName("status");
             entity.Property(e => e.Userid).HasColumnName("userid");
 

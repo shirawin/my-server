@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Repositories.GeneratedModels;
+using Services.DTOS;
 using Services.Users;
 
 namespace my_server.Controllers
@@ -49,7 +50,7 @@ namespace my_server.Controllers
 
         [HttpPost]
         [Route("/api/createUser")]
-        public async Task<ActionResult<IEnumerable<User>>> createUser(User user)
+        public async Task<ActionResult<IEnumerable<UserCar>>> createUser(UserCar user)
         {
             var result = await _dbStore.createUser(user);
             if (result)
@@ -150,13 +151,13 @@ namespace my_server.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
-        [Route("/api/GetUserType")]
-        public async Task<ActionResult<IEnumerable<bool>>> getUserType(int code)
-        {
-            var result = await _dbStore.getUserType(code);
-            return Ok(result);
-        }
+        //[HttpGet]
+        //[Route("/api/GetUserType")]
+        //public async Task<ActionResult<IEnumerable<User>>> getUserType(int code)
+        //{
+        //    var result = await _dbStore.getUser(code);
+        //    return Ok(result);
+        //}
 
 
         [HttpPost]

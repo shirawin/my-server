@@ -9,11 +9,11 @@ public partial class Alarm
 
     public int? Userid { get; set; }
 
-    public int? Minhour { get; set; }
-
-    public int? Maxhour { get; set; }
-
     public int? Status { get; set; }
+
+    public string? Minhour { get; set; }
+
+    public string? Maxhour { get; set; }
 
     public virtual User? User { get; set; }
 }

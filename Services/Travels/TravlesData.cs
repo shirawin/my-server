@@ -13,7 +13,7 @@ namespace Services.Travels
 
         public async Task<bool> createTravel(Travel travel)
         {
-            travel.UserId = 125;
+            
             travel.Status = 1;
             await _context.Travels.AddAsync(travel);
             var isOK = await _context.SaveChangesAsync() >= 0;
@@ -56,10 +56,9 @@ namespace Services.Travels
                                          BabyChair = x.BabyChair,
 
                                          Elevator = x.Elevator,
-
+                                      
                                          Places = x.Places,
                                      }).FirstOrDefault(),
-
                                  }
                 ).ToListAsync();
                 return res;
@@ -125,18 +124,21 @@ namespace Services.Travels
             var travels = _context.Travels.Count();
             return travels;
         }
-        public async Task<int> takeTravel(int travelID, int volunteerID)
+        public async Task<bool> takeTravel(int travelID, int volunteerID)
         {
             var travel = await _context.Travels.FirstOrDefaultAsync(t => t.TravelId == travelID);
             if (travel != null)
             {
+                var isOk = true;
                 travel.VolunteerId = volunteerID;
                 travel.Status = 1;
-                return await _context.SaveChangesAsync();
+                isOk = await _context.SaveChangesAsync() >= 0;
+                if (isOk) return true;
+                return false;
             }
             else
             {
-                return 0;
+                return false;
             }
         }
 

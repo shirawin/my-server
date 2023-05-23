@@ -1,4 +1,5 @@
 ﻿using Repositories.GeneratedModels;
+using Services.DTOS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,10 @@ namespace Services.Users
     {
         Task<int> isExsitsUser(string email, string password);
 
-        Task<bool> createUser(User user);
+        Task<bool> createUser(UserCar user);
        // Task<bool> updateUser(User user);
         Task<int> sumOfHelpeds();
-        Task<bool> getUserType(int code);
+        Task<User> getUser(int code);
         Task<bool> updateUser(User user);
     }
 }

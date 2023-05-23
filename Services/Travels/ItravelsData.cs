@@ -15,7 +15,7 @@ namespace Services.Travels
         Task<bool> createTravel(Travel travel);
         Task <List<TravelDto>> filterTravel(FilterTravelsDto filterObj);
         Task<int> sumOfTraves();
-        Task<int> takeTravel(int travelID,int volunteerID);     
+        Task<bool> takeTravel(int travelID,int volunteerID);     
 
     }
 }

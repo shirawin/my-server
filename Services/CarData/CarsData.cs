@@ -16,11 +16,8 @@ namespace Services.CarData
             _context = context;
         }
 
-        public async Task<bool> createUser(Car car)
+        public async Task<bool> createCar(Car car)
         {
-            //איך האוביקט יכיל בתוכו את הקוד משתמש??
-            //אולי לשנות את הפונקציה של יצירת משתמש שתחזיר קוד משתמש במקום טרו או פולס
-            //var isExsists = await isExsitsUser(user.Email, user.Password);
             var isOk = true;
             await _context.AddAsync(car);
             isOk = await _context.SaveChangesAsync() >= 0;
