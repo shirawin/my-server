@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Services.Email;
 using Services.EmailData;
+using Services.Alarms;
 
 namespace Services.Users
 {
@@ -16,25 +17,25 @@ namespace Services.Users
     {
         private readonly MyDBContext _context;
         private readonly ICars _carStore;
+        private readonly IAlarmData _alarmStore;
         private readonly IEmailData _sendEmail;
-        
-        public UsersData(MyDBContext context, ICars carStore, IEmailData sendEmail)
+        public UsersData(MyDBContext context, ICars carStore, IAlarmData alarmStore,IEmailData sendEmail)
         {
             _context = context;
             _carStore = carStore;
             _sendEmail = sendEmail;
+           _alarmStore=alarmStore;
         }
         public async Task<int> isExsitsUser(string email, string password)
         {
             var checkEmail  = _context.Users.Where(u => u.Email == email).FirstOrDefault();
             if (checkEmail != null)
             {
-                var checkPassWord = _context.Users.Where(u => u.Password == password).FirstOrDefault();
-                if (checkPassWord != null)
-                {
-                    if (checkPassWord.Activestatus == true)
-                        return checkPassWord.Code; //משתמש קיים!
-
+                if (checkEmail.Password == password) { 
+                
+                    if (checkEmail.Activestatus == true) { 
+                        return checkEmail.Code; //משתמש קיים!
+}
                     else return -1;   // שם משתמש וסיסמה נכונים+משתמש לא פעיל
                 }
                 else return 1;    // סיסמה שגויה   
@@ -52,33 +53,20 @@ namespace Services.Users
             newUser.Password = user.Password;
             newUser.Fullname = user.Fullname;
             newUser.Phone = user.Phone;
-
-            newUser.Activestatus =true;
-
+            newUser.Activestatus =false;
             newUser.Usertype= user.Usertype;
-
-          
-
             newUser.City = user.City;
-
             newUser.Street=user.Street;
-
             newUser.Housenumber=user.Housenumber;
-
             if (isExsists == 2)
-            {
-                //var userModel = _mapper.Map<User>(user);
-                await _context.AddAsync(newUser);
+            {   await _context.AddAsync(newUser);
                 isOk = await _context.SaveChangesAsync() >= 0;
-
                 if (isOk) 
                     userCode = newUser.Code;
                 else
                 {
                     return false;
                 }
-               
-
             }
             if(user.Usertype==true)
             {
@@ -98,19 +86,34 @@ namespace Services.Users
                 newCar.Elevator = user.Elevator;
 
                 newCar.Babychair = user.Babychair;
+
                 var createCar=  await  _carStore.createCar(newCar);
 
-               if (createCar)
-                   _sendEmail.SendEmail(newUser.Email, newUser.Fullname);
-                return createCar;
-                //מה קורה במידה והוכנס פרטי משתמש ובפרטי רכב-נפל???
-                //טרנזקציה
-                //איך תופסים שגיאה של אימייל?
-                //אם הוא נעזר שגם ישלח true+אימייל
+                if (!createCar)
+                    return false;
+                else
+                {
+                    foreach (Alarm alarm in user.listOfAlarms)
+                    {
+                        alarm.Status = 1;
+                        alarm.Userid = newUser.Code;
+                        var createAlarm= await _alarmStore.createAlarm(alarm);
+                        if (!createAlarm)
+                        {
+                            return false;
+                        }
 
+                    } 
+                    _sendEmail.SendEmail(newUser.Email, newUser.Fullname);
+                }
             }
-             
+            else 
+            {
+                _sendEmail.SendEmail(newUser.Email, newUser.Fullname);
+                return true;
+            }
             return false;
+           
         }
         public async Task<int> sumOfHelpeds()
         {
@@ -118,7 +121,12 @@ namespace Services.Users
             var helpeds = _context.Users.Where(u => u.Usertype == false).Count();
             return helpeds;
         }
-
+        public void changeActiveStatus(int userID,bool activeStatus)
+        {
+            var user = _context.Users.Where(u => u.Code == userID).FirstOrDefault();
+            user.Activestatus=activeStatus;
+             _context.SaveChangesAsync();
+        }
         public async Task<User> getUser(int code)
         {
             var user = _context.Users.Find(code);

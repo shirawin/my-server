@@ -17,7 +17,7 @@ namespace my_server
             var subject = "ברוכים הבאים לאפליקציה המגניבה 🖐";
             var message = $@"<h3>הי, {toName}</h3> 
                 <p>תודה שהצטרפת אלינו 🤗</p>
-                <p>להתראות!</p>";
+                <p>ברוך הבא</p>";
             _emailService.Send(toEmail, subject, message, true);
         }
         public void EmailWithDetails(User user,User volunteer)

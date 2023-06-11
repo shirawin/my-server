@@ -23,7 +23,7 @@ namespace my_server.Controllers
         public TravelsController(MyDBContext context, ItravelsData dbStore, EmailManager email)
         {
             _context = context;
-            _dbStore= dbStore;
+            _dbStore = dbStore;
             _email = email;
         }
 
@@ -31,7 +31,7 @@ namespace my_server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Travel>>> GetTravels()
         {
-            return await _context.Travels.ToListAsync(); 
+            return await _context.Travels.ToListAsync();
         }
 
         //כל המודעות הפעילות - עבור התנדבים
@@ -53,15 +53,15 @@ namespace my_server.Controllers
         // GET: /api/GetTravelsByUser/{userId}
         [HttpGet]
         [Route("/api/GetTravelsByUser/{userId}")]
-        public async Task<ActionResult<IEnumerable<Travel>>> GetTravelsByUser(int userId)
+        public async Task<ActionResult<TravelDto>> GetTravelsByUser(int userId)
         {
-            var travel = await _context.Travels.Where(t => t.UserId == userId).ToListAsync();
+            var travel = await _dbStore.GetTravelsByUser(userId);
             if (travel == null)
             {
                 return NotFound();
             }
 
-            return travel;
+            return Ok(travel);
         }
 
         [HttpPost]
@@ -69,7 +69,7 @@ namespace my_server.Controllers
         public async Task<ActionResult<IEnumerable<Travel>>> createTravel(Travel travel)
         {
             var List = await _dbStore.createTravel(travel);
-           
+
             if (List == null)
             {
                 return NotFound();
@@ -83,6 +83,19 @@ namespace my_server.Controllers
         public async Task<ActionResult<IEnumerable<Travel>>> filterTravel(FilterTravelsDto filterObj)
         {
             var List = await _dbStore.filterTravel(filterObj);
+
+            if (List == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(List);
+        }
+        [HttpPost]
+        [Route("/api/filterTravelsByUser/{userId}")]
+        public async Task<ActionResult<IEnumerable<Travel>>> filterTravelsByUser(FilterTravelsDto filterObj, int userId)
+        {
+            var List = await _dbStore.filterTravelsByUser(filterObj, userId);
 
             if (List == null)
             {
@@ -140,11 +153,11 @@ namespace my_server.Controllers
             var result = await _dbStore.takeTravel(travelID, volunteerID);
             var volunteer = await _context.Users.FindAsync(volunteerID);
             var travel = await _context.Travels.FindAsync(travelID);
-            if(travel!=null )
+            if (travel != null)
             {
                 var user = await _context.Users.FindAsync(travel.UserId);
-                 _email.EmailWithDetails( user,volunteer);
-              
+                _email.EmailWithDetails(user, volunteer);
+
             }
             return Ok(result);
 
@@ -190,6 +203,6 @@ namespace my_server.Controllers
 
 
         }
-        
+
     }
 }

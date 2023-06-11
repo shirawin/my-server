@@ -10,7 +10,7 @@ namespace Services.DTOS
     public class TravelDto
     {
         public int TravelId { get; set; }
-        public DateOnly? Date { get; set; }
+        public DateTime? Date { get; set; }
 
         public string? Dest { get; set; }
 

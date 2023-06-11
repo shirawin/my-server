@@ -18,5 +18,7 @@ namespace Services.Users
         Task<int> sumOfHelpeds();
         Task<User> getUser(int code);
         Task<bool> updateUser(User user);
+        void changeActiveStatus(int userID, bool activeStatus);
+
     }
 }

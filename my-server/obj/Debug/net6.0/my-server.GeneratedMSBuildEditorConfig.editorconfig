@@ -15,6 +15,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\user1\Desktop\Projects\server-side\my-server\my-server
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/user1/Desktop/Projects/server-side/my-server/my-server/Views/Alarms/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxhcm1zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user1/Desktop/Projects/server-side/my-server/my-server/Views/Alarms/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxhcm1zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user1/Desktop/Projects/server-side/my-server/my-server/Views/Alarms/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxhcm1zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user1/Desktop/Projects/server-side/my-server/my-server/Views/Alarms/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxhcm1zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user1/Desktop/Projects/server-side/my-server/my-server/Views/Alarms/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxhcm1zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/user1/Desktop/Projects/server-side/my-server/my-server/Views/Cars/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -47,6 +47,13 @@ namespace my_server.Controllers
             }
             return BadRequest();
         }
+        [HttpGet]
+        [Route("/api/Users/changeActivity/{userID}/{activeStatus}")]
+        public void changeActiveStatus(int userID, bool activeStatus)
+        {
+              _dbStore.changeActiveStatus(userID, activeStatus);
+           
+        }
 
         [HttpPost]
         [Route("/api/createUser")]

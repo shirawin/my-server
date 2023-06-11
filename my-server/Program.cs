@@ -8,11 +8,14 @@ using Services.Travels;
 using Services.CarData;
 using Services.Email;
 using Services.EmailData;
+using Services.Alarms;
+using Services.RealTime;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddSignalR();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -44,6 +47,8 @@ builder.Services.AddMailKit(optionBuilder =>
   builder.Services.AddScoped<ItravelsData, TravlesData>();
   builder.Services.AddScoped<ICars, CarsData>();
   builder.Services.AddScoped<IEmailData,EmailData>();
+builder.Services.AddScoped<IAlarmData, AlarmData>();
+
 
 var MyAppOrigin = "MyAppOrigin";
 
@@ -66,6 +71,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseRouting();
+
+//app.UseEndpoints(endpoints =>
+//{
+//    app.MapControllers();
+//    endpoints.MapHub<MyHub>("/my-hub");
+//    // ...
+//});
 app.UseCors(MyAppOrigin);
 
 app.UseHttpsRedirection();
@@ -74,4 +88,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+//app.MapHub<MyHub>("/my-hub");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHub<MyHub>("/hubs/chat");
+});
 app.Run();
+
+//RecurringJob.AddOrUpdate<SendEmailToOpenTask>(x => x.sendRequest(), Cron.Daily(05, 00), TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time"));

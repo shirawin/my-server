@@ -1157,3 +1157,4 @@ C:\Users\user1\Desktop\Projects\server-side\my-server\my-server\obj\Debug\net6.0
 C:\Users\user1\Desktop\Projects\server-side\my-server\my-server\obj\Debug\net6.0\my-server.pdb
 C:\Users\user1\Desktop\Projects\server-side\my-server\my-server\obj\Debug\net6.0\my-server.genruntimeconfig.cache
 C:\Users\user1\Desktop\Projects\server-side\my-server\my-server\obj\Debug\net6.0\ref\my-server.dll
+C:\Users\user1\Desktop\Projects\server-side\my-server\my-server\bin\Debug\net6.0\System.Net.WebSockets.WebSocketProtocol.dll

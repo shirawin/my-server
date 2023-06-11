@@ -9,6 +9,8 @@ namespace Services.DTOS
 {
     public class FilterTravelsDto
     {
+        public string? cityDest { get; set; }
+
         public DateTime? FirstDate { get; set; }
         public DateTime? SecondDate { get; set; }
         public string? city { get; set; }
