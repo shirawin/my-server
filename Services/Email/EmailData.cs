@@ -39,7 +39,15 @@ namespace Services.EmailData
 
         public void SendOk(string toEmail, string toName)
         {
-            throw new NotImplementedException();
+            var subject = "ברוכים הבאים לנסיעה טובה 🖐🚗";
+            var message = $@"<div  style='direction:rtl'>
+                   <h2>הי {toName} ,</h2> 
+                <h3>נבחרת להיות חלק מקהילת נסיעת טובה</h3>
+                <h2>מאחלים לך נסיעה טובה 😁 </h2>
+ </div>";
+
+
+            _emailService.Send(toEmail, subject, message, true);
         }
     }
 }

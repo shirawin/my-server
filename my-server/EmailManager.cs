@@ -15,10 +15,12 @@ namespace my_server
         public void SendEmail(string toEmail, string toName)
         {
             var subject = "ברוכים הבאים לנסיעה טובה 🖐🚗";
-            var message = $@"<h2>הי {toName} ,</h2> 
+            var message = $@"<div  style='direction:rtl'>
+<h2>הי {toName} ,</h2> 
                 <h3>תודה שהצטרפת אלינו 🤗</h3>
                 <h3>בקרוב תקבל מייל עם אישור מנהל</h3>
-                <h3>שתיהיה לך נסיעה טובה 😁 </h3>";
+                <h3>שתיהיה לך נסיעה טובה 😁 </h3>
+ </div>";
             _emailService.Send(toEmail, subject, message, true);
         }
         public void SendOk(string toEmail, string toName)
