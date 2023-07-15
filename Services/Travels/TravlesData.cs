@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Repositories.GeneratedModels;
 using Services.DTOS;
+using System.Security.Cryptography;
+
 namespace Services.Travels
 {
     public class TravlesData : ItravelsData
@@ -13,12 +15,30 @@ namespace Services.Travels
 
         public async Task<bool> createTravel(Travel travel)
         {
-
+            var s_City = await _context.Users.FirstOrDefaultAsync(x => x.Code == travel.UserId);
             travel.Status = 1;
             await _context.Travels.AddAsync(travel);
             var isOK = await _context.SaveChangesAsync() >= 0;
             if (isOK)
             {
+
+                var res = await (from c in _context.Cars
+                                 join u in _context.Users
+                                 on c.Userid equals u.Code
+
+                                 where (travel.Motorcycle == true && c.Motorcycle==true) &&
+                                 (travel.Ambulance == true && c.Ambulance == true) &&
+                                 (travel.BabyChair == true && c.Babychair == true) &&
+                                 (travel.Elevator == true && c.Elevator == true) &&
+                                 (travel.Places == null || travel.Places >= c.Numofsits)&&
+                                 (travel.Dest == u.City&& u.Usertype==true)&&
+                                 (s_City.City == u.City && u.Usertype == true)
+                                 select new 
+                                  {
+                                     Name = c.Ambulance,
+                                     ClassName = u.Fullname 
+                        }
+    ).ToListAsync();
                 return true;
             }
             return false;
@@ -239,7 +259,27 @@ namespace Services.Travels
                 return false;
             }
         }
-
+        public async Task<List<string>> getAllCities()
+        {
+            var uniqueDestinations = _context.Travels.Select(t => t.Dest).Distinct().ToList();
+                return uniqueDestinations;
+        }
+        public async Task<bool> closeTravel(int travelID)
+        {
+            var travel = await _context.Travels.FirstOrDefaultAsync(t => t.TravelId == travelID);
+            if (travel != null)
+            {
+                var isOk = true;
+                travel.Status = 0;
+                isOk = await _context.SaveChangesAsync() >= 0;
+                if (isOk) return true;
+                return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
     }
 }

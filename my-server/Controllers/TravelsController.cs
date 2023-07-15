@@ -203,6 +203,18 @@ namespace my_server.Controllers
 
 
         }
+        [HttpPut]
+        [Route("/api/closeTravel/{travelID}")]
+        public async Task<IActionResult> closeTravel(int travelID)
+        {
+            var result = await _dbStore.closeTravel(travelID);
+            if (result == null)
+            {
+                return NotFound(result);
+            }
+
+            return Ok(result);
+        }
 
     }
 }

@@ -21,14 +21,12 @@ namespace my_server.Controllers
             _context = context;
             _dbStore = dbStore;
         }
-
         [HttpGet]
         [Route("/api/GetSumOfVolunteers")]
         public async Task<ActionResult<IEnumerable<Volunteer>>> GetSumOfVolunteers()
         {
             var result = await _dbStore.sumOfVolunteers();
             return Ok(result);
-
         }
     }
 }

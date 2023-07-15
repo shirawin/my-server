@@ -18,6 +18,8 @@ namespace Services.Travels
         Task<List<TravelDto>> filterTravelsByUser(FilterTravelsDto filterObj, int userId);
         Task<int> sumOfTraves();
         Task<bool> takeTravel(int travelID, int volunteerID);
+        Task<bool> closeTravel(int travelID);
+
 
     }
 }

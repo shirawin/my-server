@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Services.Email;
-using Services.EmailData;
 using Services.Alarms;
 
 namespace Services.Users
@@ -28,14 +27,15 @@ namespace Services.Users
         }
         public async Task<int> isExsitsUser(string email, string password)
         {
-            var checkEmail  = _context.Users.Where(u => u.Email == email).FirstOrDefault();
+            var checkEmail = _context.Users.Where(u => u.Email == email).FirstOrDefault();
             if (checkEmail != null)
             {
-                if (checkEmail.Password == password) { 
-                
-                    if (checkEmail.Activestatus == true) { 
-                        return checkEmail.Code; //משתמש קיים!
-}
+                var checkPassWord = _context.Users.Where(u => u.Password == password & u.Email == email).FirstOrDefault();
+                if (checkPassWord != null)
+                {
+                    if (checkPassWord.Activestatus == true)
+                        return checkPassWord.Code; //משתמש קיים!
+
                     else return -1;   // שם משתמש וסיסמה נכונים+משתמש לא פעיל
                 }
                 else return 1;    // סיסמה שגויה   
@@ -124,8 +124,12 @@ namespace Services.Users
         public void changeActiveStatus(int userID,bool activeStatus)
         {
             var user = _context.Users.Where(u => u.Code == userID).FirstOrDefault();
-            user.Activestatus=activeStatus;
-             _context.SaveChangesAsync();
+            user.Activestatus= activeStatus;
+            _context.SaveChangesAsync();
+            if (activeStatus)
+            {
+                _sendEmail.SendOk(user.Email, user.Fullname);
+            }
         }
         public async Task<User> getUser(int code)
         {

@@ -17,7 +17,7 @@ namespace Services.Volunteers
 
         public async Task<int> sumOfVolunteers()
         {
-            var v = _context.Volunteers.Count();
+            var v = _context.Users.Where(u=>u.Usertype==true).Count();
 
             return v;
         }

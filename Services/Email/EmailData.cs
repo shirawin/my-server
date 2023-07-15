@@ -36,5 +36,10 @@ namespace Services.EmailData
                 <p>כתובת מייל -{volunteer.Email}</p>";
             _emailService.Send(user.Email, subject, message, true);
         }
+
+        public void SendOk(string toEmail, string toName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -10,6 +10,7 @@ using Services.Email;
 using Services.EmailData;
 using Services.Alarms;
 using Services.RealTime;
+using Services.Volunteers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,7 +45,9 @@ builder.Services.AddMailKit(optionBuilder =>
 
   builder.Services.AddScoped<EmailManager>();
   builder.Services.AddScoped<IusersData, UsersData>();
-  builder.Services.AddScoped<ItravelsData, TravlesData>();
+builder.Services.AddScoped<IvolunteerData, volunteerData>();
+
+builder.Services.AddScoped<ItravelsData, TravlesData>();
   builder.Services.AddScoped<ICars, CarsData>();
   builder.Services.AddScoped<IEmailData,EmailData>();
 builder.Services.AddScoped<IAlarmData, AlarmData>();
